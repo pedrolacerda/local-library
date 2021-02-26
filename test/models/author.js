@@ -17,12 +17,12 @@ describe("Author Schema", function() {
         family_name: family_name,
         date_of_birth: date_of_birth,
         date_of_death: date_of_death,
-      })
+      });
 
       author.lifespan.should.equal(50);
-
     });
-    it("Should return the date of birth formatted", function() {
+
+    it("Should return the date of birth formatted", function () {
       const first_name = "John";
       const family_name = "Doe";
       const date_of_birth = DateTime.fromISO("1970-05-30T23:32:12.583");
