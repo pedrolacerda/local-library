@@ -1,0 +1,31 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  
+env:
+  WORKFLOW_VAR: "my workflow env var"
+    
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: 12
+      JOB_VAR: "my job env var"
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - run: npm ci
+    - name: Print step env var
+      env:
+        STEP_VAR: "my step env var"
+      run: echo $STEP_VAR
