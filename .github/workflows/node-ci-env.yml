@@ -29,3 +29,7 @@ jobs:
       env:
         STEP_VAR: "my step env var"
       run: echo $STEP_VAR
+    - name: Print job env var
+      run: echo $JOB_VAR
+    - name: Print workflow env var
+      run: echo $WORKFLOW_VAR
