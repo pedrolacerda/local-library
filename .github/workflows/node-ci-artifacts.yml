@@ -25,5 +25,10 @@ jobs:
     - name: Zip repo files
       run: | #fix the folder to zip
         cd ..
-        ls
         tar -zcvf local-library.tar.gz local-library/ 
+    
+    - name: Upload artifat
+      uses: actions/upload-artifact@v2
+      with:
+        name: local-library
+        path: ../local-library
