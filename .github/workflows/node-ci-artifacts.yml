@@ -21,12 +21,6 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
     - run: npm ci
-    - name: "Configure AWS Credentials"
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1 
 
-    - name: List S3 Buckets
-      run: aws s3api list-buckets
+    - name: Zip repo files
+      run: tar -zcvf local-library.tar.gz local-library/ #fix the folder to zip
