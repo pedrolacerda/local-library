@@ -4,11 +4,11 @@ on: push
 
 jobs:
   ubuntu:
-    runs-on: ubuntu-lates
+    runs-on: ubuntu-latest
     steps:
     - run: date
   windows:
-    runs-on: windows-lates
+    runs-on: windows-latest
     steps:
     - run: date
   macos:
