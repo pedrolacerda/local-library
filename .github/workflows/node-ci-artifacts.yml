@@ -16,11 +16,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       
-    - name: Use Node.js ${{ env.NODE_VERSION }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-    - run: npm ci
+    # - name: Use Node.js ${{ env.NODE_VERSION }}
+    #   uses: actions/setup-node@v1
+    #   with:
+    #     node-version: ${{ env.NODE_VERSION }}
+    # - run: npm ci
 
     - name: Zip repo files
       run: | #fix the folder to zip
@@ -31,4 +31,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: local-library
-        path: ../local-library
+        path: local-library/
