@@ -3,7 +3,7 @@ name: First workflow
 on: 
   push:
     branches:
-      - main
+      - no-branch  # talk about regex to name branches 'release-*', 'm*ster'
 
 jobs: #jobs identifiers must start with a letter or underscore. Can only contain alphanumeric characters, dashes, underscores
       #jobs run in parallel
