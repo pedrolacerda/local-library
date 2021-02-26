@@ -5,7 +5,7 @@ name: Node.js Pipeline
 
 on:
   push:
-    branches: [ no-branch ]
+    branches: [ pedro-branch ]
   pull_request:
     branches: [ no-branch ]
     
