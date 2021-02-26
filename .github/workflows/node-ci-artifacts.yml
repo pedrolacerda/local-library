@@ -23,4 +23,4 @@ jobs:
     - run: npm ci
 
     - name: Zip repo files
-      run: tar -zcvf local-library.tar.gz local-library/ #fix the folder to zip
+      run: ls #tar -zcvf local-library.tar.gz local-library/ #fix the folder to zip
