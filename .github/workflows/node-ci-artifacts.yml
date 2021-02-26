@@ -27,7 +27,9 @@ jobs:
         cd ..
         tar -zcvf local-library.tar.gz local-library/
 
-    - run: ls
+    - run: |
+        cd ..
+        ls
     
     - name: Upload artifact
       uses: actions/upload-artifact@v2
