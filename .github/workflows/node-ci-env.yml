@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ no-branch ]
   pull_request:
-    branches: [ main ]
+    branches: [ no-branch ]
   
 env:
   WORKFLOW_VAR: "my workflow env var"
