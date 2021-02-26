@@ -1,0 +1,24 @@
+name: First workflow
+
+on: push
+
+jobs: #jobs identifiers must start with a letter or underscore. Can only contain alphanumeric characters, dashes, underscores
+      #jobs run in parallel
+    job1:
+      name: First job
+      runs-on: ubuntu-latest
+      steps:  # steps run as processes on the compute resource. Steps can run commands or actions
+        - name: Step one
+          uses: actions/checkout@v2
+        - name: Step two
+          run: env | sort
+
+    job2:
+      name: Second job
+      runs-on: windows-latest
+      needs: job1
+      steps:
+        - name: Step one
+          uses: actions/checkout@v2 
+        - name: Step two
+          run: "Get-ChildItem Env: | Sort-Object Name"
