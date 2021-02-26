@@ -3,7 +3,7 @@ name: First workflow
 on: 
   push:
     branches:
-      - none
+      - main
 
 jobs: #jobs identifiers must start with a letter or underscore. Can only contain alphanumeric characters, dashes, underscores
       #jobs run in parallel
@@ -19,9 +19,17 @@ jobs: #jobs identifiers must start with a letter or underscore. Can only contain
     job2:
       name: Second job
       runs-on: windows-latest
-      needs: job1
       steps:
         - name: Step one
           uses: actions/checkout@v2 
         - name: Step two
           run: "Get-ChildItem Env: | Sort-Object Name"
+    
+    job3:
+      name: Third job
+      runs-on: ubuntu-latest
+      needs: [job1, job2]
+      steps:
+        - name: Final step
+          run: echo "Final step"
+      

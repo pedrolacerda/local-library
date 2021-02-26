@@ -1,6 +1,9 @@
 name: First workflow
 
-on: push
+on: 
+  push:
+    branches:
+      - none
 
 jobs: #jobs identifiers must start with a letter or underscore. Can only contain alphanumeric characters, dashes, underscores
       #jobs run in parallel
