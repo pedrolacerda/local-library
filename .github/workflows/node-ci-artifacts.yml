@@ -31,5 +31,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: local-library
-        path: ./**/local-library
+        path: "**/local-library"
         if-no-files-found: error
