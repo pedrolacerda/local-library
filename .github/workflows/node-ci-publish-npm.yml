@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ no-branch ]
   pull_request:
-    branches: [ main ]
+    branches: [ no-branch ]
     
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12 # discuss passing arguments to an action
-        registry-url: https://npm.pkg.github.com/
+        registry-url: https://npm.pkg.github.com/ # check if it'll be needed to change the name of the package to reflect the org/owner
     
     - run: npm publish
       env:
