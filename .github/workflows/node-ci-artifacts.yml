@@ -25,7 +25,8 @@ jobs:
     - name: Zip repo files
       run: | #fix the folder to zip
         cd ..
-        tar -zcvf local-library.tar.gz local-library/
+        tar -zcf local-library.tar.gz local-library/
+        mv local-library.tar.gz local-library/local-library.tar.gz
 
     - run: |
         cd ..
@@ -35,5 +36,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: local-library
-        path: "../local-library.tar.gz"
+        path: "local-library.tar.gz"
         if-no-files-found: error
