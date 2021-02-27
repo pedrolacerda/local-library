@@ -23,18 +23,14 @@ jobs:
     # - run: npm ci
 
     - name: Zip repo files
-      run: | #fix the folder to zip
+      run: | #fix the folder to be zipped
         cd ..
         tar -zcf local-library.tar.gz local-library/
         mv local-library.tar.gz local-library/local-library.tar.gz
-
-    - run: |
-        cd ..
-        ls
     
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: local-library
-        path: "local-library.tar.gz"
+        path: .
         if-no-files-found: error
