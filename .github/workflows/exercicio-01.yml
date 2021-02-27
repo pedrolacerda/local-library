@@ -2,7 +2,7 @@ name: Multi-job workflow
 
 on: 
   push:
-    branches: no-branch
+    branches: [no-branch]
 
 jobs:
   multi-os:

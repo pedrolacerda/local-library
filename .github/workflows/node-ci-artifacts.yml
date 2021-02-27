@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ no-branch ]
   pull_request:
-    branches: [ main ]
+    branches: [ no-branch ]
     
 jobs:
   build:
@@ -15,18 +15,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      
-    # - name: Use Node.js ${{ env.NODE_VERSION }}
-    #   uses: actions/setup-node@v1
-    #   with:
-    #     node-version: ${{ env.NODE_VERSION }}
-    # - run: npm ci
-
-    - name: Zip repo files
-      run: | #fix the folder to be zipped
-        cd ..
-        tar -zcf local-library.tar.gz local-library/
-        mv local-library.tar.gz local-library/local-library.tar.gz
     
     - name: Upload artifact
       uses: actions/upload-artifact@v2

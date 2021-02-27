@@ -1,6 +1,9 @@
 name: Upload artifact
 
-on: push
+on: 
+  push:
+    branches:
+      - "no-branch"
 
 env:
   ARTIFACT_NAME: my_artifact
