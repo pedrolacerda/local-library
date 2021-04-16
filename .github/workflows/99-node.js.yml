@@ -8,6 +8,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ no-branch ]
+  workflow_dispatch:
     
 
 jobs:
@@ -83,35 +84,35 @@ jobs:
 #           JAVASCRIPT_DEFAULT_STYLE: prettier
   
   
-#   deploy:
-#     runs-on: ubuntu-latest
-#     env:
-#       DB_URI: $${{ secrets.DB_URI }}
-#       NODE_ENV: production
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      DB_URI: $${{ secrets.DB_URI }}
+      NODE_ENV: production
       
 #     needs: [build, prettier]
-#     steps:
-#       - name: Checkout Code
-#         uses: actions/checkout@v2
-#         with:
-#           # Full git history is needed to build on Heroku
-#           fetch-depth: 0
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          # Full git history is needed to build on Heroku
+          fetch-depth: 0
       
-#       - name: Login Heroku
-#         uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
-#         with:
-#           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-#           heroku_app_name: pedrolacerda-local-library
-#           heroku_email: pedrohrl1@gmail.com
-#           justlogin: true
+      - name: Login Heroku
+        uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: pedrolacerda-local-library
+          heroku_email: pedrohrl1@gmail.com
+          justlogin: true
       
-#       - name: Set Heroku remote
-#         run: heroku git:remote -a pedrolacerda-local-library
+      - name: Set Heroku remote
+        run: heroku git:remote -a pedrolacerda-local-library
       
-#       - name: Set env variables
-#         run: |
-#           heroku config:set NODE_ENV=${{ env.NODE_ENV }}
-#           heroku config:set MONGODB_URI=${{ env.DB_URI }}
+      - name: Set env variables
+        run: |
+          heroku config:set NODE_ENV=${{ env.NODE_ENV }}
+          heroku config:set MONGODB_URI=${{ env.DB_URI }}
       
-#       - name: Push code to Heroku
-#         run: git push heroku main
+      - name: Push code to Heroku
+        run: git push heroku main
