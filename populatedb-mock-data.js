@@ -31,6 +31,19 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 var books = [];
 var bookinstances = [];
 
+function genreCreate(name, cb) {
+  var genre = new Genre({ name: name });
+
+  genre.save(function (err) {
+    if (err) {
+      cb(err, null);
+      return;
+    }
+    console.log("New Genre: " + genre);
+    cb(null, genre);
+  });
+}
+
 function bookCreate(title, summary, isbn, author, genre, cb) {
   bookdetail = {
     title: title,
@@ -86,14 +99,16 @@ function createGenreAuthors(cb) {
       callback(null, "create_authors");
     },
     function (callback) {
-      db.collection("genres").insertMany(genresList, function (err, result) {
-        if (err) {
-          throw err;
-        } else {
-          console.log(`${genresList.length} genres inserted into the DB`);
-        }
+      
+      genresList.forEach((genre) => {
+
+        genreCreate(
+          genre.genre,
+          function () {
+            console.log(`Genre ${genre.genre} created`);
+          }
+        );
       });
-      callback(null, "create_genres");
     },
     function (results, err) {
       if (err) {
@@ -204,7 +219,11 @@ function createBookInstances() {
 }
 
 async.series(
-  [createGenreAuthors, createBooks, createBookInstances],
+  [
+    // createGenreAuthors,
+    // createBooks, 
+    createBookInstances
+  ],
   // Optional callback
   function (err, results) {
     if (err) {

@@ -8,7 +8,8 @@
     "start": "node ./bin/www PORT=8000",
     "test": "mocha  -- --recursive",
     "devstart": "nodemon ./bin/www",
-    "serverstart": "DEBUG=express-locallibrary-tutorial:* npm run devstart"
+    "serverstart": "DEBUG=express-locallibrary-tutorial:* npm run devstart",
+    "eslint": "eslint"
   },
   "dependencies": {
     "@primer/css": "^15.2.0",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "chai": "^4.3.0",
+    "eslint": "^7.21.0",
     "mocha": "^8.3.0",
     "nodemon": "^2.0.7"
   }
